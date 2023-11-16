@@ -8,14 +8,14 @@
 		.box {
 			width: 70px;
 			height: 70px;
-			background-color: teal;
+			background-color: rgb(0, 126, 128);
 			font-size: 300%;
 			text-align: center;
 			user-select: none;
 			display: block;
 			position: absolute;
-			top: 100px;
-			left: 0px;  /* <--- Change me! */
+			top: 100px; 
+			left: 0px;  /* <--- */
 		}
 		.board{
 			height: 100vh;
@@ -63,7 +63,7 @@
 			
 			// TODO 2 - Variable declarations 
 			
-
+			var positionX = 0
 			
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
@@ -71,7 +71,7 @@
 			turn it around! 
 			*/
 			function update() {
-				
+				moveBoxTo(boardWidth)
 
 			};
 

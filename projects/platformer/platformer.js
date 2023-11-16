@@ -70,7 +70,7 @@ createCollectable('database', 660, 350, 1, 0)
 createCannon('right', 600, 1500)
 createCannon('top', 750,2000)
 createCannon('left', 400, 2000)
-
+createCannon('bottom', 1050,2000)
 
     /////////////////////////////////////////////////
     //////////ONLY CHANGE ABOVE THIS POINT///////////
