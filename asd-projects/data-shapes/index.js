@@ -53,7 +53,9 @@ for (let i = 0; i < dataShapes.length; i ++ ) {
   }
 }
   // TODO 3-a: add a function that handles the static display type
-  function handleStatic
+  function (data) {
+    
+  }
 
   // TODO 4-a: add a function that handles the good display type
   
