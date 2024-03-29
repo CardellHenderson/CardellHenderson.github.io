@@ -62,7 +62,7 @@ for (let i = 0; i < dataShapes.length; i ++ ) {
 
   // TODO 4-a: add a function that handles the good display type
   function handleGood(color, shape, repeat) {
-    function setBackgroundWithSimple {
+    setBackgroundWithSimple(color, shape, repeat) ;{
       animationDetails.displayType = 2
     } 
   }
@@ -70,8 +70,8 @@ for (let i = 0; i < dataShapes.length; i ++ ) {
   // TODO 5-a: add a function that handles the bad display type
   function handleBad(data, repeat) {
     for (var i = 0;  i < 10; i++)
-  }
-setBackgroundWithMixed(data, repeat) {
+ 2};
+setBackgroundWithMixed(data, repeat); {
   animationDetails.displayType = 3
 }
   /////////////////////////////////////////////////
@@ -80,8 +80,7 @@ setBackgroundWithMixed(data, repeat) {
 
   function staticDisplay() {
     // TODO 3-b: call your handleStatic function
-    function handleStatic
-  }
+handleStatic(currentShape)  }
 
   function goodDisplay() {
     // TODO 4-b: call your handleGood function
@@ -93,7 +92,7 @@ setBackgroundWithMixed(data, repeat) {
     // TODO 5-b: call your handleBad function
     var currentShape = "circle"
     var repeat = "3'"
-    function handleBad("circle", "3")
+    handleBad("circle", "3")
   }
 
   /////////////////////////////////////////////////
