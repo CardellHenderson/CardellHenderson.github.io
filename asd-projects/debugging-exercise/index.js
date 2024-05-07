@@ -16,7 +16,7 @@ $(document).ready(function(){
     //////////
     // startup
     //////////
-    
+
     // this gets the whole thing going;
     // it creates a number of circles both in JavaScript and in the HTML of the website
     for (var i = 0; i < maxCircles; i++){
