@@ -19,10 +19,11 @@ function resetAndRender() {
 // this function applies the filters to the image and is where you should call
 // all of your apply functions
 function applyAndRender() {
-  // Multiple TODOs: Call your apply function(s) here
-
+   // Multiple TODOs: Call your apply function(s) here
+  applyFilter(reddify);
+  applyFilter(decreaseBlue);
+  applyFilter(increaseGreenByBlue);
   
-
   // do not change the below line of code
   render($("#display"), image);
 }
@@ -33,26 +34,31 @@ function applyAndRender() {
 
 // TODO 1, 2 & 4: Create the applyFilter function here
 function applyFilter(filterFunction) {
+  
   for (let i = 0; i < image.length; i++) {
     for (let j = 0; j < image[i].length; j++) {
+      
       let rgbString = image[i][j];
       let rgbNumbers = rgbStringToArray(rgbString);
+      rgbNumbers[RED] = 255;
+      rgbString = rgbArrayToString(rgbNumbers);
+      image[i][j] = rgbString;
+      
+     
       filterFunction(rgbNumbers);
-      image[i][j] = rgbArrayToString(rgbNumbers);
     }
   }
 }
 
-
-
-
 // TODO 7: Create the applyFilterNoBackground function
 function applyFilterNoBackground(filterFunction) {
-  const backgroundPixel = image[0][0];
   
+  let backgroundColor = image[0][0];
+  
+ 
   for (let i = 0; i < image.length; i++) {
     for (let j = 0; j < image[i].length; j++) {
-      if (image[i][j] !== backgroundPixel) {
+      if (image[i][j] !== backgroundColor) {
         let rgbString = image[i][j];
         let rgbNumbers = rgbStringToArray(rgbString);
         filterFunction(rgbNumbers);
@@ -61,9 +67,10 @@ function applyFilterNoBackground(filterFunction) {
     }
   }
 }
+
 // TODO 5: Create the keepInBounds function
 function keepInBounds(number) {
-  return Math.min(255, Math.max(0, number));
+  return Math.max(0, Math.min(number, 255));
 }
 
 // TODO 3: Create reddify function
@@ -79,5 +86,3 @@ function decreaseBlue(rgbNumbers) {
 function increaseGreenByBlue(rgbNumbers) {
   rgbNumbers[GREEN] = keepInBounds(rgbNumbers[BLUE] + rgbNumbers[GREEN]);
 }
-
-// CHALLENGE code goes below here
