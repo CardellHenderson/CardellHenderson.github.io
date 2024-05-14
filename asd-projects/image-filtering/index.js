@@ -40,12 +40,11 @@ function applyFilter(filterFunction) {
       
       let rgbString = image[i][j];
       let rgbNumbers = rgbStringToArray(rgbString);
-      rgbNumbers[RED] = 255;
-      rgbString = rgbArrayToString(rgbNumbers);
+      filterFunction(rgbNumbers);
+     rgbString = rgbArrayToString(rgbNumbers);
       image[i][j] = rgbString;
       
      
-      filterFunction(rgbNumbers);
     }
   }
 }
