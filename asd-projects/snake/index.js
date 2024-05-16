@@ -112,8 +112,8 @@ function moveSnake() {
   column/row properties. 
   
   */
-  function moveSnake() {
-    checkForNewDirection();
+   
+    
     
     for (var i = snake.body.length - 1; i > 0; i--) {
       var snakeSquare = snake.body[i];
@@ -123,7 +123,7 @@ function moveSnake() {
       snakeSquare.column = nextSnakeSquare.column;
       repositionSquare(snakeSquare);
     }
-    
+    checkForNewDirection()
     // Move the head
     if (snake.head.direction === "left") {
       snake.head.column = snake.head.column - 1;
@@ -138,25 +138,7 @@ function moveSnake() {
   }
   
   //Before moving the head, check for a new direction from the keyboard input
-  checkForNewDirection();
-
-  /* 
-  TODO 7: determine the next row and column for the snake's head
  
-  HINT: The snake's head will need to move forward 1 square based on the value
-  of snake.head.direction which may be one of "left", "right", "up", or "down"
-  */ if (snake.head.direction === "left") {
-  snake.head.column = snake.head.column - 1;
-} else if (snake.head.direction === "up") {
-  snake.head.row = snake.head.row - 1;
-} else if (snake.head.direction === "right") {
-  snake.head.column = snake.head.column + 1;
-} else if (snake.head.direction === "down") {
-  snake.head.row = snake.head.row + 1;
-}
-repositionSquare(snake.head);
-
-}
 
 function hasHitWall() {
   /* 
@@ -212,23 +194,22 @@ function handleAppleCollision() {
   If the tail is moving "down", place the next snakeSquare above it.
   etc...
   */
-  var row = 0;
-  var column = 0;
+  
 
   // code to determine the row and column of the snakeSquare to add to the snake
-  var row, column;
+  
   if (snake.tail.direction === "left") {
-    row = snake.tail.row;
-    column = snake.tail.column + 1;
+    row = snake.head.row;
+    column = snake.head.column + 1;
   } else if (snake.tail.direction === "up") {
-    row = snake.tail.row + 1;
-    column = snake.tail.column;
+    row = snake.head.row - 1;
+    column = snake.head.column;
   } else if (snake.tail.direction === "right") {
-    row = snake.tail.row;
-    column = snake.tail.column - 1;
+    row = snake.head.row;
+    column = snake.head.column - 1;
   } else if (snake.tail.direction === "down") {
-    row = snake.tail.row - 1;
-    column = snake.tail.column;
+    row = snake.head.row + 1;
+    column = snake.head.column;
   }
   makeSnakeSquare(row, column);
   
@@ -366,7 +347,7 @@ function getRandomAvailablePosition() {
     spaceIsAvailable to false so that a new position is generated.
     */
     for (var i = 0; i < snake.body.length; i++) {
-      if (randomPosition.row === snake.body[i].row && randomPosition.column === snake.body[i].column) {
+      if (randomPostition.row === snake.body[i].row && randomPosition.column === snake.body[i].column) {
         spaceIsAvailable = false;
   
       }
