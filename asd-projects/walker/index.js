@@ -15,7 +15,9 @@ function runProgram(){
     UP: 38,
     RIGHT: 39,
     DOWN: 40
-};
+  };
+  var width = $("#board").width()
+  var height = $("#board").height()
   // Game Item Objects
   var walker = {
     x: 0,
@@ -27,7 +29,7 @@ function runProgram(){
   // one-time setup
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
   $(document).on('keydown', handleKeyDown);                           // change 'eventType' to the type of event you want to handle
-
+  $(document).on('keyup', handleKeyUp);
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -61,14 +63,9 @@ function runProgram(){
   if (event.which === KEY.DOWN) {
     walker.speedY = 5;
   }
-
+  }
   function handleKeyUp(event) {
-    var KEY = {
-      LEFT: 37,
-      UP: 38,
-      RIGHT: 39,
-      DOWN: 40
-    };
+
     if (event.which === KEY.LEFT || event.which === KEY.RIGHT) {
       walker.speedX = 0;
     }
@@ -90,7 +87,20 @@ function runProgram(){
       "top": walker.y
     });
   }
-  
+  function wallCollision() {
+    if (walker.x === $("#board").width()) {
+      walker.x -= walker.speedX
+    } 
+    if (walker.x === 0) {
+      walker.x -= walker.speedX
+    }
+    if (walker.y === $("#board").height()) {
+      walker.y -= walker.speedY
+    }
+    if (walker.y === 0) {
+      walker.y -= walker.speedY
+    }
+  }
   function endGame() {
     // stop the interval timer
     clearInterval(interval);
